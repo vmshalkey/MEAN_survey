@@ -1,0 +1,54 @@
+<nav>
+	<a href="#/dashboard">Go to Polls</a>
+	<button ng-if="!loggedUser" ng-click="loginUser()">Login</button>
+	<button ng-if="loggedUser" ng-click="logoutUser()">Logout</button>
+</nav>
+<div ng-repeat="poll in poll">
+	<h1>{{poll.question}}</h1>
+	<h3>Click the Vote button to choose one</h3>
+	<table>
+		<thead>
+			<th>Option</th>
+			<th>Current Count of Votes</th>
+			<th>Action</th>
+		</thead>
+		<tbody>
+			<tr>
+				<td>{{poll.option_1.text}}</td>
+				<td>{{poll.option_1.votes}}</td>
+				<td>
+					<form>
+						<input type="submit" ng-click="updatePoll(poll._id, 1)" value="Vote">
+					</form>
+				</td>
+			</tr>
+			<tr>
+				<td>{{poll.option_2.text}}</td>
+				<td>{{poll.option_2.votes}}</td>
+				<td>
+					<form>
+						<input type="submit" ng-click="updatePoll(poll._id, 2)" value="Vote">
+					</form>
+				</td>
+			</tr>
+			<tr>
+				<td>{{poll.option_3.text}}</td>
+				<td>{{poll.option_3.votes}}</td>
+				<td>
+					<form>
+						<input type="submit" ng-click="updatePoll(poll._id, 3)" value="Vote">
+					</form>
+				</td>
+			</tr>
+			<tr>
+				<td>{{poll.option_4.text}}</td>
+				<td>{{poll.option_4.votes}}</td>
+				<td>
+					<form>
+						<input type="submit" ng-click="updatePoll(poll._id, 4)" value="Vote">
+					</form>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

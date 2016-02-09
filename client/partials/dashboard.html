@@ -1,0 +1,21 @@
+<h1>Current Polls:</h1>
+<input type="text" ng-model="filter" placeholder="Search">
+<table>
+	<thead>
+		<th>Name</th>
+		<th>Survey Question</th>
+		<th>Date Posted</th>
+		<th>Action</th>
+	</thead>
+	<tbody>
+		<tr ng-repeat="poll in polls | filter: filter | orderBy: '-created_at' ">
+			<td>{{poll.name}}</td>
+			<td>{{poll.question}}</td>
+			<td>{{poll.created_at}}</td>
+			<td>
+				<button ng-if="loggedUser" ng-click="deletePoll(poll._id)">Delete</button>
+				<button ng-if="loggedUser" ng-click="getPoll(poll._id)">Vote</button>
+			</td>
+		</tr>
+	</tbody>
+</table>
